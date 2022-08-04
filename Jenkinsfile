@@ -17,18 +17,7 @@ pipeline
        }
     stages
     {
-         stage('SonarQubeServer') {
-		  steps {
-                        sh '''
-                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
-			-Dsonar.projectKey=pankajpatre11_simple-app \
-			-Dsonar.projectName=PankajPatre \
-                        -Dsonar.java.coveragePlugin=jacoco \
-                        -Dsonar.jacoco.reportPaths=target/jacoco.exec \
-    			-Dsonar.junit.reportsPaths=target/surefire-reports
-    			'''
-                   }
-		  }
+
                             
         stage('SonarQube analysis') {
             
