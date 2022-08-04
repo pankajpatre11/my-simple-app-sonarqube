@@ -17,14 +17,6 @@ pipeline
        }
     stages
     {
-        stage('Build')
-        {
-            steps
-            {
-                 sh script: 'mvn clean package'
-            }
-         }
-	    
          stage('SonarQubeServer') {
 		  steps {
                         sh '''
@@ -73,46 +65,7 @@ pipeline
             }
         }
 	    
-	    
-	    
-        stage('Build Docker image')
-        {
-            steps
-            {
-                script{
-                    dockerImage = docker.build(imageName)
-                }
-            }
-         }
-      stage('Upload Docker image into Repo')
-        {
-            steps
-            {
-                script{ 
-			sh 'docker tag myapp pankajpatre11/myapp'			
-			sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
-		        sh 'docker push pankajpatre11/myapp' 
-			sh 'pwd'
-                 // docker.withRegistry("https://docker.io/pankajpatre11", "dockerhub")
-                  // {
-	           // sh 'docker tag myapp docker.io/myapp'
-                    //sh 'docker images'
-                   // dockerImage.push("latest")
-                  // }
-                }
-            }
-         }	    
-	    
-     stage ('K8S Deploy') {
-	      steps{
-       
-                kubernetesDeploy(
-                    configs: 'springboot-lb.yaml',
-                    kubeconfigId: 'K8S',
-                    enableConfigSubstitution: true
-                    )               
-        }
-      }
+
 	  	    
     
 	    
