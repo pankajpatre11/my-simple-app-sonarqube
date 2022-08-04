@@ -46,7 +46,7 @@
 	<properties>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <sonar.organization>pankajpatre11</sonar.organization>
+        <sonar.organization>PankajPatre</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         </properties>
 </project>
